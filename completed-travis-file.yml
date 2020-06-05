@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t mukeshkbj/docker-reactjs -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true mukeshkbj/docker-reactjs npm run test
