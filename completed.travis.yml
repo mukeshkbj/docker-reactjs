@@ -1,0 +1,23 @@
+language: generic
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t mukeshkbj/docker-reactjs -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true mukeshkbj/docker-reactjs npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-1"
+  app: "DockerReactjs"
+  env: "DockerReactjs-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-1-929646068667"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY  
