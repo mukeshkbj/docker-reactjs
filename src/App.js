@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn Earn And Fun 
+          Learn Earn And Fun Changed
         </a>
       </header>
     </div>
